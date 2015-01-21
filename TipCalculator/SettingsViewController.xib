@@ -3,12 +3,10 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6247"/>
-        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="SettingsViewController">
             <connections>
-                <outlet property="tipControl" destination="KsG-a0-BQN" id="BbE-79-WSP"/>
                 <outlet property="tipPickerView1" destination="GqS-96-ySU" id="URc-Iu-3sV"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
@@ -20,36 +18,21 @@
             <subviews>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Configure Tab Settings:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2Si-Rl-KUY">
                     <rect key="frame" x="10" y="87" width="180" height="21"/>
-                    <constraints>
-                        <constraint firstAttribute="width" constant="180" id="ISY-eH-dbv"/>
-                        <constraint firstAttribute="height" constant="21" id="ukN-9s-rHi"/>
-                    </constraints>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="KsG-a0-BQN">
-                    <rect key="frame" x="10" y="123" width="582" height="29"/>
-                    <segments>
-                        <segment title="First"/>
-                        <segment title="Second"/>
-                        <segment title="Third"/>
-                    </segments>
-                </segmentedControl>
                 <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GqS-96-ySU">
-                    <rect key="frame" x="0.0" y="228" width="600" height="162"/>
+                    <rect key="frame" x="0.0" y="131" width="600" height="162"/>
                 </pickerView>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <constraints>
-                <constraint firstItem="KsG-a0-BQN" firstAttribute="trailing" secondItem="i5M-Pr-FkT" secondAttribute="trailingMargin" id="JjT-np-esa"/>
-                <constraint firstItem="KsG-a0-BQN" firstAttribute="top" secondItem="2Si-Rl-KUY" secondAttribute="bottom" constant="15" id="Ocr-RG-wbd"/>
-                <constraint firstItem="2Si-Rl-KUY" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="87" id="XVS-m3-2oq"/>
-                <constraint firstAttribute="trailing" secondItem="GqS-96-ySU" secondAttribute="trailing" id="qQ2-XS-ItD"/>
-                <constraint firstItem="GqS-96-ySU" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="tjn-OR-Xhx"/>
-                <constraint firstItem="KsG-a0-BQN" firstAttribute="leading" secondItem="2Si-Rl-KUY" secondAttribute="leading" id="tnI-pH-6qE"/>
-                <constraint firstItem="2Si-Rl-KUY" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="10" id="upT-qJ-eKT"/>
-                <constraint firstItem="GqS-96-ySU" firstAttribute="top" secondItem="KsG-a0-BQN" secondAttribute="bottom" constant="77" id="y1T-rx-w9e"/>
+                <constraint firstItem="2Si-Rl-KUY" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="10" id="Nyd-2O-TFF"/>
+                <constraint firstItem="GqS-96-ySU" firstAttribute="top" secondItem="2Si-Rl-KUY" secondAttribute="bottom" constant="23" id="cCw-ag-fZ6"/>
+                <constraint firstItem="GqS-96-ySU" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="csz-4g-Q87"/>
+                <constraint firstAttribute="trailing" secondItem="GqS-96-ySU" secondAttribute="trailing" id="mq2-YG-OWd"/>
+                <constraint firstItem="2Si-Rl-KUY" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="87" id="njE-yt-PFU"/>
             </constraints>
         </view>
     </objects>

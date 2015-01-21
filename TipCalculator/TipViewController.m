@@ -14,7 +14,8 @@
 @property (weak, nonatomic) IBOutlet UILabel *tipLabel;
 @property (weak, nonatomic) IBOutlet UILabel *totalLabel;
 @property (weak, nonatomic) IBOutlet UISegmentedControl *tipControl;
-@property (nonatomic,strong) NSArray *tipValues;
+@property (nonatomic, strong) NSArray *storedKeys;
+@property (nonatomic,strong) NSMutableArray *tipValues;
 
 - (IBAction)onTap:(id)sender;
 - (void)updateValues;
@@ -28,6 +29,8 @@
     self.title = @"Tip Calculator";
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Settings" style:UIBarButtonItemStylePlain target:self action:@selector(onSettingsButton)];
     // Do any additional setup after loading the view from its nib.
+    self.storedKeys = @[@"firstTab",@"secondTab",@"thirdTab"];
+    self.tipValues = [[NSMutableArray alloc] initWithArray:@[@(10),@(15),@(20)]];
     [self updateTipValues];
     [self updateValues];
 }
@@ -62,20 +65,17 @@
 
 - (void)updateTipValues {
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    NSString *tipValue1 = [defaults stringForKey:@"firstTab"];
-    NSString *tipValue2 = [defaults stringForKey:@"secondTab"];
-    NSString *tipValue3 = [defaults stringForKey:@"thirdTab"];
-    
-    if (tipValue1 == nil && tipValue2 == nil && tipValue3 == nil) {
-        self.tipValues = @[@(10),@(15),@(20)];
-    } else {
-        self.tipValues = @[tipValue1,tipValue2,tipValue3];
-    }
     
     for (NSInteger i = 0; i < self.tipControl.numberOfSegments; i++) {
+        [self setTipAtIndex:i withValue:[defaults integerForKey:self.storedKeys[i]]];
         [self.tipControl setTitle:[NSString stringWithFormat:@"%%%@", self.tipValues[i]] forSegmentAtIndex:i];
     }
-    
+}
+
+- (void)setTipAtIndex:(NSInteger)index withValue:(NSInteger)storedValue {
+    if (storedValue != 0) {
+        [self.tipValues replaceObjectAtIndex:index withObject:@(storedValue)];
+    }
 }
 
 - (void)updateValues {

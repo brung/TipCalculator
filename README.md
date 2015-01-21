@@ -6,9 +6,9 @@ This is the CodePath iOS Intro Class Pre-Assignment to create a simple Tip Calcu
 Time Spent:
 
 Completed user stories:
- [*] Required: Followed walkthrough to create TipCalculator Application
- [*] Required: Augmented TipCalculator to include Settings
- [*] Optional: Modified UI
+ * [x] Required: Follow walkthrough to create TipCalculator Application
+ * [x] Required: Augment TipCalculator to include Settings
+ * [] Optional: Modify UI
 
 Notes:
 
