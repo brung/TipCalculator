@@ -14,6 +14,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *tipLabel;
 @property (weak, nonatomic) IBOutlet UILabel *totalLabel;
 @property (weak, nonatomic) IBOutlet UISegmentedControl *tipControl;
+@property (nonatomic,strong) NSArray *tipValues;
 
 - (IBAction)onTap:(id)sender;
 - (void)updateValues;
@@ -27,6 +28,15 @@
     self.title = @"Tip Calculator";
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Settings" style:UIBarButtonItemStylePlain target:self action:@selector(onSettingsButton)];
     // Do any additional setup after loading the view from its nib.
+    [self updateTipValues];
+    [self updateValues];
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+    [self updateTipValues];
+}
+
+- (void) viewDidAppear:(BOOL)animated {
     [self updateValues];
 }
 
@@ -50,11 +60,28 @@
     [self updateValues];
 }
 
+- (void)updateTipValues {
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    NSString *tipValue1 = [defaults stringForKey:@"firstTab"];
+    NSString *tipValue2 = [defaults stringForKey:@"secondTab"];
+    NSString *tipValue3 = [defaults stringForKey:@"thirdTab"];
+    
+    if (tipValue1 == nil && tipValue2 == nil && tipValue3 == nil) {
+        self.tipValues = @[@(10),@(15),@(20)];
+    } else {
+        self.tipValues = @[tipValue1,tipValue2,tipValue3];
+    }
+    
+    for (NSInteger i = 0; i < self.tipControl.numberOfSegments; i++) {
+        [self.tipControl setTitle:[NSString stringWithFormat:@"%%%@", self.tipValues[i]] forSegmentAtIndex:i];
+    }
+    
+}
+
 - (void)updateValues {
     float billAmount = [self.billTextField.text floatValue];
     
-    NSArray *tipValues = @[@(0.1),@(0.15),@(0.2)];
-    float tipAmount = billAmount * [tipValues[self.tipControl.selectedSegmentIndex] floatValue];
+    float tipAmount = billAmount * [self.tipValues[self.tipControl.selectedSegmentIndex] floatValue] / 100;
     float totalAmount = billAmount + tipAmount;
     
     self.tipLabel.text = [NSString stringWithFormat:@"$%0.2f", tipAmount];

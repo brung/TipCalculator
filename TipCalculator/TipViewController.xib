@@ -44,7 +44,7 @@
                         <constraint firstAttribute="height" constant="43" id="GwC-bY-J5p"/>
                         <constraint firstAttribute="width" constant="201" id="kw9-6j-8J5"/>
                     </constraints>
-                    <fontDescription key="fontDescription" type="boldSystem" pointSize="30"/>
+                    <fontDescription key="fontDescription" type="boldSystem" pointSize="24"/>
                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                     <nil key="highlightedColor"/>
                 </label>
@@ -62,7 +62,7 @@
                     <constraints>
                         <constraint firstAttribute="width" constant="135" id="E8K-2i-b1m"/>
                     </constraints>
-                    <fontDescription key="fontDescription" type="boldSystem" pointSize="30"/>
+                    <fontDescription key="fontDescription" type="boldSystem" pointSize="24"/>
                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                     <nil key="highlightedColor"/>
                 </label>
@@ -120,7 +120,7 @@
             <connections>
                 <outletCollection property="gestureRecognizers" destination="BWh-hy-yJd" appends="YES" id="t43-wl-rvs"/>
             </connections>
-            <point key="canvasLocation" x="140" y="149"/>
+            <point key="canvasLocation" x="139.5" y="148.5"/>
         </view>
         <tapGestureRecognizer id="BWh-hy-yJd">
             <connections>

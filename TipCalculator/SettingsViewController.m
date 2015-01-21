@@ -8,9 +8,10 @@
 
 #import "SettingsViewController.h"
 
-@interface SettingsViewController ()
-@property (weak, nonatomic) IBOutlet UIPickerView *tipPickerView;
+@interface SettingsViewController () <UIPickerViewDataSource, UIPickerViewDelegate>
+
 @property (weak, nonatomic) IBOutlet UISegmentedControl *tipControl;
+@property (weak, nonatomic) IBOutlet UIPickerView *tipPickerView1;
 @property (nonatomic, strong) NSArray *tipValues;
 
 @end
@@ -20,7 +21,28 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.title = @"Settings";
-    self.tipValues = @[@(0.1),@(0.15),@(0.2)];
+//    self.tipValues = @[@(0.05),@(0.06),@(0.07),@(0.08),@(0.09),@(0.10),@(0.11),@(0.12),@(0.13),@(0.14),@(0.15),@(0.16),@(0.17),@(0.18),@(0.19),@(0.20),@(0.21),@(0.22),@(0.23),@(0.24),@(0.25)];
+    
+    self.tipPickerView1.delegate = self;
+    self.tipPickerView1.dataSource = self;
+    
+    NSInteger tipValue1;
+    NSInteger tipValue2;
+    NSInteger tipValue3;
+
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    tipValue1 = [defaults integerForKey:@"firstTab"];
+    tipValue2 = [defaults integerForKey:@"secondTab"];
+    tipValue3 = [defaults integerForKey:@"thirdTab"];
+    
+    tipValue1 = tipValue1 == 0 ? 10 : tipValue1;
+    tipValue2 = tipValue2 == 0 ? 15 : tipValue2;
+    tipValue3 = tipValue3 == 0 ? 20 : tipValue3;
+    
+    [self.tipPickerView1 selectRow:[self getRowFromTipValue:tipValue1] inComponent:0 animated:YES];
+    [self.tipPickerView1 selectRow:[self getRowFromTipValue:tipValue2] inComponent:1 animated:YES];
+    [self.tipPickerView1 selectRow:[self getRowFromTipValue:tipValue3] inComponent:2 animated:YES];
+    
     // Do any additional setup after loading the view from its nib.
 }
 
@@ -28,6 +50,46 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+
+- (NSInteger)numberOfComponentsInPickerView:(UIPickerView *)pickerView {
+    return 3;
+}
+
+- (NSInteger)pickerView:(UIPickerView *)pickerView numberOfRowsInComponent:(NSInteger)component {
+    return 25;
+//    return self.tipValues.count;
+}
+
+- (NSString *)pickerView:(UIPickerView *)pickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component {
+    NSString *value = [NSString stringWithFormat:@"%%%ld",[self getTipValueFromRow:row]];
+//    NSString *value = [NSString stringWithFormat:@"%0.2f",[self.tipValues[row] floatValue]];
+   return value;
+}
+
+
+- (void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component {
+    NSInteger tipValue = [self getTipValueFromRow:row];
+//    NSString *value = [NSString stringWithFormat:@"%0.2f",[self.tipValues[row] floatValue]];
+    NSString *key = @"firstTab";
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    if (component == 1) {
+        key = @"secondTab";
+    } else if (component == 2) {
+        key = @"thirdTab";
+    }
+
+    [defaults setInteger:tipValue forKey:key];
+    [defaults synchronize];
+}
+
+- (NSInteger)getRowFromTipValue:(NSInteger)tipValue {
+    return tipValue - 1;
+}
+
+- (NSInteger)getTipValueFromRow:(NSInteger)row {
+    return row+1;
+}
+
 
 /*
 #pragma mark - Navigation
