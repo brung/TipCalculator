@@ -8,7 +8,7 @@ Time Spent:
 Completed user stories:
  * [x] Required: Follow walkthrough to create TipCalculator Application
  * [x] Required: Augment TipCalculator to include Settings
- * [] Optional: Modify UI
+ * [o] Optional: Modify UI
 
 Notes:
 
