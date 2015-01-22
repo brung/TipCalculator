@@ -3,7 +3,7 @@ CodePath iOS Intro Class - HW#1 Tip Calculator
 
 This is the CodePath iOS Intro Class Pre-Assignment to create a simple Tip Calculator
 
-Time Spent:
+Time Spent: 5 hours
 
 Completed user stories:
  * [x] Required: Follow walkthrough to create TipCalculator Application
