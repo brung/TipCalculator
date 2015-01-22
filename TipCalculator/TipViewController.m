@@ -9,10 +9,12 @@
 #import "TipViewController.h"
 #import "SettingsViewController.h"
 
-@interface TipViewController ()
+@interface TipViewController () <UIPickerViewDataSource,UIPickerViewDelegate>
 @property (weak, nonatomic) IBOutlet UITextField *billTextField;
+@property (weak, nonatomic) IBOutlet UITextField *billShareTextField;
 @property (weak, nonatomic) IBOutlet UILabel *tipLabel;
 @property (weak, nonatomic) IBOutlet UILabel *totalLabel;
+@property (weak, nonatomic) IBOutlet UILabel *billShareLabel;
 @property (weak, nonatomic) IBOutlet UISegmentedControl *tipControl;
 @property (nonatomic, strong) NSArray *storedKeys;
 @property (nonatomic,strong) NSMutableArray *tipValues;
@@ -29,6 +31,9 @@
     self.title = @"Tip Calculator";
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Settings" style:UIBarButtonItemStylePlain target:self action:@selector(onSettingsButton)];
     // Do any additional setup after loading the view from its nib.
+    
+    self.billShareTextField.text = @"1";
+    
     self.storedKeys = @[@"firstTab",@"secondTab",@"thirdTab"];
     self.tipValues = [[NSMutableArray alloc] initWithArray:@[@(10),@(15),@(20)]];
     [self updateTipValues];
@@ -63,6 +68,14 @@
     [self updateValues];
 }
 
+- (IBAction)onBillEditEnd:(id)sender {
+    [self updateValues];
+}
+
+- (IBAction)onBillShareEditEnd:(id)sender {
+    [self updateValues];
+}
+
 - (void)updateTipValues {
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     
@@ -83,13 +96,20 @@
     
     float tipAmount = billAmount * [self.tipValues[self.tipControl.selectedSegmentIndex] floatValue] / 100;
     float totalAmount = billAmount + tipAmount;
+    float billShare = [self.billShareTextField.text floatValue];
+    if (billShare < 1) {
+        billShare = 1;
+    }
+    float billShareAmount = totalAmount / billShare;
     
     self.tipLabel.text = [NSString stringWithFormat:@"$%0.2f", tipAmount];
     self.totalLabel.text = [NSString stringWithFormat:@"$%0.2f", totalAmount];
+    
+    self.billShareLabel.text =[NSString stringWithFormat:@"$%0.2f", billShareAmount];
 }
 
 - (void)onSettingsButton{
     [self.navigationController pushViewController:[[SettingsViewController alloc] init] animated:YES];
-    
 }
+
 @end

@@ -17,8 +17,11 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Configure Tab Settings:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2Si-Rl-KUY">
-                    <rect key="frame" x="10" y="87" width="180" height="21"/>
-                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <rect key="frame" x="10" y="87" width="217" height="21"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="217" id="HtX-Fq-IUX"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                     <nil key="highlightedColor"/>
                 </label>
@@ -26,13 +29,13 @@
                     <rect key="frame" x="0.0" y="131" width="600" height="162"/>
                 </pickerView>
             </subviews>
-            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <color key="backgroundColor" red="0.91465692934782605" green="0.91465692934782605" blue="0.91465692934782605" alpha="1" colorSpace="calibratedRGB"/>
             <constraints>
-                <constraint firstItem="2Si-Rl-KUY" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="10" id="Nyd-2O-TFF"/>
-                <constraint firstItem="GqS-96-ySU" firstAttribute="top" secondItem="2Si-Rl-KUY" secondAttribute="bottom" constant="23" id="cCw-ag-fZ6"/>
-                <constraint firstItem="GqS-96-ySU" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="csz-4g-Q87"/>
-                <constraint firstAttribute="trailing" secondItem="GqS-96-ySU" secondAttribute="trailing" id="mq2-YG-OWd"/>
-                <constraint firstItem="2Si-Rl-KUY" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="87" id="njE-yt-PFU"/>
+                <constraint firstItem="2Si-Rl-KUY" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="87" id="94l-b1-0ps"/>
+                <constraint firstItem="2Si-Rl-KUY" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="10" id="WOE-Oe-fOU"/>
+                <constraint firstAttribute="trailing" secondItem="GqS-96-ySU" secondAttribute="trailing" id="ce3-89-d5A"/>
+                <constraint firstItem="GqS-96-ySU" firstAttribute="top" secondItem="2Si-Rl-KUY" secondAttribute="bottom" constant="23" id="kEA-no-qJA"/>
+                <constraint firstItem="GqS-96-ySU" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="lr8-ii-AtO"/>
             </constraints>
         </view>
     </objects>
